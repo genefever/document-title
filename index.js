@@ -9,11 +9,13 @@ function useDocumentTitle(title, retainOnUnmount = false) {
   }, [title]);
 
   useEffect(() => {
+    const defaultTitleRef = defaultTitle.current;
     return () => {
       if (!retainOnUnmount) {
-        document.title = defaultTitle.current;
+        document.title = defaultTitleRef;
       }
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 }
 
